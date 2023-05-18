@@ -30,8 +30,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
 
 # print the chat completion
-        print(chat_completion.choices[0].message.content)
-        # self.wfile.write(json.dumps(response).encode())
+        response = chat_completion.choices[0].message.content
+        self.wfile.write(json.dumps(response).encode())
 
     def _set_headers(self, status):
         # Notice this Docstring also includes information about the arguments passed to the function
